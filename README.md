@@ -18,6 +18,3 @@ When it finishes successsfully, the command will output a one-time login URL.
 # Persistence
 
 Persistent state is stored in two docker volumes (named `data` and `www`). You can destroy and recreate the containers as much as you like and your site will be preserved until you also destroy these volumes.
-
-
-
