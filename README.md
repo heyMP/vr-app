@@ -1,8 +1,7 @@
 # Getting started
 
 ```
-docker-compose build
-docker-compose up
+make start
 ```
 
 # First-time initialization

@@ -1,0 +1,10 @@
+id: fieldable_path_copy_path_node
+label: 'Copy path to Fieldable Path field'
+status: true
+langcode: en
+type: node
+plugin: fieldable_path_copy_path
+configuration: {  }
+dependencies:
+  module:
+    - node

@@ -1,0 +1,11 @@
+decoupled_router.path_translation:
+  path: '/router/translate-path'
+  defaults:
+    _title: 'Translates an incoming path into a formatted response.'
+    _controller: '\Drupal\decoupled_router\Controller\PathTranslator::translate'
+  methods: [GET]
+  options:
+    _auth: ['basic_auth', 'cookie', 'oauth2']
+  requirements:
+    _permission: 'access content'
+    _format: json

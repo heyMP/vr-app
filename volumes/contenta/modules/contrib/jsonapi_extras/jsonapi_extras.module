@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Module implementation file.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function jsonapi_extras_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'entity.jsonapi_resource_config.collection':
+      $output = '';
+      $output .= '<p>' . t('The following table shows the list of JSON API resources available.') . '</p>';
+      $output .= '<p>' . t("Use the overwrite operation to overwrite a resource's configuration. You can revert back to the default configuration using the revert operation.") . '</p>';
+      return $output;
+  }
+}

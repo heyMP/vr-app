@@ -1,0 +1,6 @@
+services:
+  serializer.normalizer.image_entity.consumer_image_styles:
+    class: Drupal\consumer_image_styles\Normalizer\ImageEntityNormalizer
+    arguments: ['@jsonapi.link_manager', '@jsonapi.resource_type.repository', '@entity_type.manager', '@consumer.negotiator']
+    tags:
+      - { name: normalizer, priority: 24 }

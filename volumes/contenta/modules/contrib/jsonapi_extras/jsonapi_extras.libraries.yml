@@ -1,0 +1,11 @@
+admin:
+  version: VERSION
+  css:
+    theme:
+      css/jsonapi_extras.admin.css: {}
+  js:
+    js/jsonapi_extras.admin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
