@@ -4,6 +4,8 @@
 make start
 ```
 
+
+
 # First-time initialization
 
 The container doesn't automatically run `drush site-install` because we want it to be possible to stop and start an existing container without rebuilding the site every time. Instead, you need to manually run this after starting the container the first time:
