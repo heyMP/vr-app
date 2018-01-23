@@ -1,9 +1,17 @@
 version: '3'
 services:
+  app:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - contenta
   nginx:
     build: ./nginx
     ports:
-      - "80:80"
+      - "81:80"
       - "443:443"
     networks:
       - contenta
@@ -25,18 +33,27 @@ services:
       - contenta
   database:
     build: ./database
-    ports:
-      - "3306:3306"
+    # ports:
+    #   - "3306:3306"
     volumes:
       - data:/var/lib/mysql
     env_file:
       - .env
     networks: 
       - contenta
+  service_snapshot:
+    build: ./service_snapshot
+    entrypoint: npm start
+    ports:
+      - "3000:3000"
+    volumes: 
+      - ./service_snapshot:/home/node/html
+      - service_snapshot_nodemodules:/home/node/html/node_modules
 
 volumes:
   data:
   www:
+  service_snapshot_nodemodules:
 
 networks:
   contenta: 

@@ -1,0 +1,21 @@
+{
+  "name": "service_snapshot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro",
+    "dev": "micro-dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "micro": "^9.1.0",
+    "nodemon": "^1.14.11",
+    "webshot": "^0.18.0"
+  },
+  "devDependencies": {
+    "micro-dev": "^2.2.0"
+  }
+}

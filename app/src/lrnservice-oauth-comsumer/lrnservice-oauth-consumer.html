@@ -1,0 +1,66 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="lrnservice-oauth-consumer">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <iron-ajax auto id="getToken" method="POST" url="[[authUrl]]" body="[[__getTokenRequestBody]]" handle-as="json" on-response="__getTokenHandler"></iron-ajax>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'lrnservice-oauth-consumer',
+      properties: {
+        token: {
+          type: Object,
+          value: ''
+        },
+        authUrl: {
+          type: String,
+          value: 'http://localhost/oauth/token'
+        },
+        clientId: {
+          type: String,
+          value: 'd9fbbfef-926f-4e77-b160-67830bad0159'
+        },
+        clientSecret: {
+          type: String,
+          value: 'root'
+        },
+        username: {
+          type: String,
+          value: 'mgp140'
+        },
+        password: {
+          type: String,
+          value: 'root'
+        },
+        scope: {
+          type: String,
+          value: 'vr_app'
+        },
+        __getTokenRequestBody: {
+          type: Object,
+          computed: '__getTokenRequestBodyCompute(clientId, clientSecret, username, password)'
+        },
+      },
+      __getTokenRequestBodyCompute: function (clientId, clientSecret, username, password) {
+        const requestArray = [
+          `grant_type=password`,
+          `client_id=${clientId}`,
+          `client_secret=${clientSecret}`,
+          `username=${username}`,
+          `password=${password}`
+        ]
+        return requestArray.join('&');
+      },
+      __getTokenHandler: function (request) {
+        this.__token = request.detail.response;
+      },
+    });
+  </script>
+</dom-module>

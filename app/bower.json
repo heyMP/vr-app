@@ -1,0 +1,20 @@
+{
+  "name": "vr-app",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "view-json": "zvakanaka/view-json#^2.0.0",
+    "iron-pages": "PolymerElements/iron-pages#^2.0.1",
+    "iron-ajax": "PolymerElements/iron-ajax#^2.0.8",
+    "oauth-authorizator": "Festify/oauth-authorizator#^0.3.3",
+    "iron-meta": "PolymerElements/iron-meta#^2.0.4",
+    "aframe": "aframevr/aframe#^0.7.1",
+    "iron-list": "PolymerElements/iron-list#^2.0.12"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^6.0.0-prerelease.5",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

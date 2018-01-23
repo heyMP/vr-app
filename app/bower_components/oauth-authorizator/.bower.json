@@ -1,0 +1,28 @@
+{
+  "name": "oauth-authorizator",
+  "description": "A Polymer 2.0 Element that performs the OAuth2 authorization code flow",
+  "main": "oauth-authorizator.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  },
+  "homepage": "https://github.com/Festify/oauth-authorizator",
+  "version": "0.3.3",
+  "_release": "0.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.3",
+    "commit": "c4e1ef55d01b69e93244d403f7612e4fd7dccb33"
+  },
+  "_source": "https://github.com/Festify/oauth-authorizator.git",
+  "_target": "^0.3.3",
+  "_originalSource": "Festify/oauth-authorizator",
+  "_direct": true
+}

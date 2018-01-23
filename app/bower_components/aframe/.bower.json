@@ -1,0 +1,15 @@
+{
+  "name": "aframe",
+  "homepage": "https://github.com/aframevr/aframe",
+  "version": "0.7.1",
+  "_release": "0.7.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.7.1",
+    "commit": "b9a751e7fd8737ef538972c3620c27c19fe27754"
+  },
+  "_source": "https://github.com/aframevr/aframe.git",
+  "_target": "^0.7.1",
+  "_originalSource": "aframevr/aframe",
+  "_direct": true
+}

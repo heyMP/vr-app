@@ -1,0 +1,67 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
+<link rel="import" href="../vr-app-homepage/vr-app-homepage.html">
+
+<dom-module id="vr-app-root">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <vr-app-homepage></vr-app-homepage>
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'vr-app-root',
+
+      properties: {
+      },
+
+      listeners: {
+        'get-scene-list': '__getSceneListHandler',
+        'get-scene': '__getSceneHandler'
+      },
+
+      /**
+       * Get Scenes
+       */
+      getSceneList: function () {
+        return fetch(`http://localhost/api/node/scene`, {
+          method: 'get'
+        });
+      },
+      /**
+       * Listen for request for getScene
+       */
+      __getSceneListHandler: async function (e, req) {
+        const response = await this.getSceneList();
+        const scenes = await response.json();
+        req.el.scenes = scenes.data;
+      },
+
+      /**
+       * Get a single scene
+       */
+      getScene: function (id) {
+        return fetch(`http://localhost/api/node/scene/${id}`, {
+          method: 'get'
+        });
+      },
+      /**
+       * Listen for request for getScene
+       */
+      __getSceneHandler: async function (e, req) {
+        const response = await this.getScene(req.id);
+        const scene = await response.json();
+        req.el.scene = scene;
+      },
+
+    });
+  </script>
+</dom-module>

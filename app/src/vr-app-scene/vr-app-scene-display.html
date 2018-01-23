@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="vr-app-scene-display">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <a-scene id="scene"></a-scene>
+  </template>
+  <script>
+    Polymer({
+      is: 'vr-app-scene-display',
+      scene: {
+        type: Object,
+        value: {}
+      },
+      observers: [
+        '__sceneChanged(scene)'
+      ],
+      __sceneChanged: function (scene) {
+        if (scene && scene.data) {
+          console.log(scene);
+          this.$$('#scene').innerHTML = scene.data.attributes.body.value;
+        }
+      }
+    });
+  </script>
+</dom-module>

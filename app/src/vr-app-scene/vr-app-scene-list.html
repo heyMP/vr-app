@@ -1,0 +1,47 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+
+<dom-module id="vr-app-scene-list">
+  <template>
+    <style>
+      :host {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      iron-list {
+        flex: 1 1 auto;
+      }
+    </style>
+    <iron-list items="[[scenes]]">
+      <template>
+        <div>
+          [[item.attributes.title]]
+        </div>
+      </template>
+    </iron-list>
+  </template>
+  <script>
+    Polymer({
+      is: 'vr-app-scene-list',
+      properties: {
+        /**
+         * Options
+         *  - grid
+         */
+        display: {
+          type: String,
+          value: 'grid'
+        },
+        scenes: {
+          type: Array,
+          value: ''
+        }
+      },
+      ready: function () {
+        this.fire('get-scene-list', { el: this });
+      }
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="vr-app-scene-display.html">
+
+<dom-module id="vr-app-scene">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <vr-app-scene-display scene="[[scene]]"></vr-app-scene-display>
+  </template>
+  <script>
+    Polymer({
+      is: 'vr-app-scene',
+      properties: {
+        /**
+         * The unique id of the scene
+         */
+        id: {
+          type: String,
+          value: '',
+        },
+        scene: {
+          type: Object,
+          value: {}
+        }
+      },
+      attached: function () {
+        this.fire('get-scene', {id: this.id, el: this});
+      }
+    });
+  </script>
+</dom-module>
