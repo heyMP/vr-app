@@ -17,7 +17,6 @@ services:
       - contenta
     volumes:
       - www:/var/www
-      - ./volumes/contenta:/var/www/web
     # this ensures that nginx's upstream host "php" will always have
     # valid DNS when we're starting up
     depends_on:

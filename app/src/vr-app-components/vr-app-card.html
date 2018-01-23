@@ -1,0 +1,49 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+
+<dom-module id="vr-app-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-card {
+        width: 100%;
+        --paper-card-header: {
+          background: crimson;
+          height: 10vw;
+          max-height: 100px;
+          color: white;
+        }
+      }
+    </style>
+
+    <paper-card heading="[[title]]" image="[[image]]">
+      <div class="card-content">
+        <slot></slot>
+      </div>
+      <div class="card-actions">
+        <paper-button>view</paper-button>
+      </div>
+    </paper-card>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'vr-app-card',
+      properties: {
+        title: {
+          type: String,
+          value: ''
+        },
+        image: {
+          type: String,
+          value: ''
+        }
+      }
+    });
+  </script>
+</dom-module>

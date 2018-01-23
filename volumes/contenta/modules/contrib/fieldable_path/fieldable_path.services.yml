@@ -1,3 +1,0 @@
-services:
-  fieldable_path.controller:
-    class: Drupal\fieldable_path\Controller\FieldablePathController

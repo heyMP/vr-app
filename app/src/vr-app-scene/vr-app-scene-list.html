@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../vr-app-components/vr-app-card.html">
 
 <dom-module id="vr-app-scene-list">
   <template>
@@ -13,12 +14,15 @@
       iron-list {
         flex: 1 1 auto;
       }
+
+      vr-app-card {
+        width: 100%;
+        max-width: 500px;
+      }
     </style>
-    <iron-list items="[[scenes]]">
+    <iron-list items="[[scenes]]" as="scene">
       <template>
-        <div>
-          [[item.attributes.title]]
-        </div>
+        <vr-app-card title="[[scene.attributes.title]]"></vr-app-card>
       </template>
     </iron-list>
   </template>

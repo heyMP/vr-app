@@ -9,7 +9,8 @@
     "oauth-authorizator": "Festify/oauth-authorizator#^0.3.3",
     "iron-meta": "PolymerElements/iron-meta#^2.0.4",
     "aframe": "aframevr/aframe#^0.7.1",
-    "iron-list": "PolymerElements/iron-list#^2.0.12"
+    "iron-list": "PolymerElements/iron-list#^2.0.12",
+    "paper-card": "PolymerElements/paper-card#^2.0.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -2,12 +2,16 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
 <link rel="import" href="../vr-app-homepage/vr-app-homepage.html">
+<link rel="import" href="../vr-app-scene/vr-app-scene.html">
 
 <dom-module id="vr-app-root">
   <template>
     <style>
       :host {
         display: block;
+        background: #f3f3f3;
+        padding: 1em;
+        margin: 0;
       }
     </style>
 
@@ -29,30 +33,27 @@
       },
 
       /**
-       * Get Scenes
+       * Get a single scene
+       * leave blank to get all collections
        */
-      getSceneList: function () {
-        return fetch(`http://localhost/api/node/scene`, {
+      getScene: function (id = null) {
+        const resource = 'http://localhost/api/node/scene';
+        const target = id ? `/${id}` : '';
+        const url = resource + target;
+        return fetch(url, {
           method: 'get'
         });
       },
+
       /**
        * Listen for request for getScene
        */
       __getSceneListHandler: async function (e, req) {
-        const response = await this.getSceneList();
+        const response = await this.getScene();
         const scenes = await response.json();
         req.el.scenes = scenes.data;
       },
 
-      /**
-       * Get a single scene
-       */
-      getScene: function (id) {
-        return fetch(`http://localhost/api/node/scene/${id}`, {
-          method: 'get'
-        });
-      },
       /**
        * Listen for request for getScene
        */
