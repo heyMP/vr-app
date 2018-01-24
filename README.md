@@ -4,6 +4,11 @@
 make start
 ```
 
+This is a headless application which has a Drupal Contenta backend driving a Polymer app frontent.
+
+| Drupal Contenta | Polymer App |
+| -------------  |-------------|
+| http://localhost | http://localhost:81 |
 
 
 # Initialize new Drupal site.
