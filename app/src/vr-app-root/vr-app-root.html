@@ -36,21 +36,23 @@
        * Get a single scene
        * leave blank to get all collections
        */
-      getScene: function (id = null) {
+      getScene: async function (id = null) {
         const resource = 'http://localhost/api/node/scene';
         const target = id ? `/${id}` : '';
-        const url = resource + target;
-        return fetch(url, {
+        const params = '?_format=api_json&include=field_image,field_image.thumbnail'
+        const url = resource + target + params;
+        const request = await fetch(url, {
           method: 'get'
         });
+        const scene = await request.json();
+        return scene;
       },
 
       /**
        * Listen for request for getScene
        */
       __getSceneListHandler: async function (e, req) {
-        const response = await this.getScene();
-        const scenes = await response.json();
+        const scene = await this.getScene();
         req.el.scenes = scenes.data;
       },
 
