@@ -1,0 +1,14 @@
+services:
+  logger.channel.decoupled_router:
+    parent: logger.channel_base
+    arguments: ['decoupled_router']
+  decoupled_router.router_path_translator.subscriber:
+    class: Drupal\decoupled_router\EventSubscriber\RouterPathTranslatorSubscriber
+    arguments: ['@service_container', '@logger.channel.decoupled_router', '@router.no_access_checks', '@module_handler']
+    tags:
+      - { name: event_subscriber }
+  decoupled_router.redirect_path_translator.subscriber:
+    class: Drupal\decoupled_router\EventSubscriber\RedirectPathTranslatorSubscriber
+    arguments: ['@service_container', '@logger.channel.decoupled_router', '@router.no_access_checks', '@module_handler']
+    tags:
+      - { name: event_subscriber }

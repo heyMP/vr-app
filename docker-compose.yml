@@ -49,6 +49,12 @@ services:
     volumes: 
       - ./service_snapshot:/home/node/html
       - service_snapshot_nodemodules:/home/node/html/node_modules
+  contenta:
+    image: ubuntu
+    volumes:
+      - www:/var/www
+      - /var/www/web/sites
+      - ./contenta/web:/var/www/web
 
 volumes:
   data:
