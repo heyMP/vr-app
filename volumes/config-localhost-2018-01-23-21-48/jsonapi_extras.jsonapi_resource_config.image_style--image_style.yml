@@ -1,0 +1,58 @@
+uuid: 8b5f30c5-71df-4549-8d89-453a3d3d9345
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin_contenta
+  module:
+    - image
+_core:
+  default_config_hash: s9l5U_Xwk87WUzSwmZv5AOS3TA_bIgl3cugjtE3yg24
+id: image_style--image_style
+disabled: false
+path: imageStyles
+resourceType: imageStyles
+resourceFields:
+  id:
+    fieldName: id
+    publicName: internalId
+    enhancer:
+      id: ''
+    disabled: false
+  label:
+    fieldName: label
+    publicName: label
+    enhancer:
+      id: ''
+    disabled: false
+  revision:
+    disabled: true
+    fieldName: revision
+    publicName: revision
+    enhancer:
+      id: ''
+  bundle:
+    fieldName: bundle
+    publicName: bundle
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    disabled: true
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+  default_langcode:
+    disabled: true
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+  uuid:
+    disabled: true
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''

@@ -1,0 +1,209 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<script>
+  'use strict';
+
+  /**
+   * @mixinFunction
+   * @polymer
+   * @interface
+   * @demo demo/mixin.html Child Loading state
+   * @demo demo/mixin-defer.html Defer children loading state
+   * @summary Defines a loading flag for elements that automatically take into account the loading state of the child
+   * elements. For a visual explanation, take a look at the demo section, that might explain something more.
+   */
+  const MatryoshkaLoaderMixin = (superClass) => {
+    /**
+     * @polymer
+     * @extends {superClass}
+     * @mixinClass
+     * @implements {MatryoshkaLoaderMixin}
+     */
+    class MatryoshkaLoader extends superClass {
+      static get properties() {
+        return {
+          /**
+           * List of all child elements that have propagated their events to this element.
+           * @private
+           */
+          __relatedElements: {
+            type: Array,
+            value: []
+          },
+
+          /**
+           * True if the element or one of it's children are still loading.
+           */
+          loading: {
+            type: Boolean,
+            readOnly: true,
+            reflectToAttribute: true,
+            computed: '_isLoading(__relatedElements, hostLoading)'
+          },
+
+          /**
+           * True if the element its self and all children are loaded
+           */
+          loaded: {
+            type: Boolean,
+            readOnly: true,
+            reflectToAttribute: true, //@todo remove this
+            computed: '_isLoaded(__relatedElements, hostLoading)'
+          },
+
+          /**
+           * Flag to set if the element its self is loading
+           */
+          hostLoading: {
+            type: Boolean,
+            value: false,
+            observer: '_onHostLoading'
+          },
+
+          /**
+           * Flag to prevent bubbling of loading state to parent, it doesn't fire anything, but it can still receive events
+           * from child elements.
+           */
+          defer: {
+            type: Boolean,
+            value: false,
+          },
+        }
+      }
+
+      /**
+       * @protected
+       */
+      ready() {
+        super.ready();
+        this.addEventListener('matryoshka-loading', (e) => this._onMatryoshkaLoading(e));
+        this.addEventListener('matryoshka-loaded', (e) => this._onMatryoshkaLoaded(e));
+      }
+
+      /**
+       * When the hostLoading property of the element changes, we need to fire of some events.
+       * If defer is set, we prevent the firing of events.
+       *
+       * @private
+       */
+      _onHostLoading(hostLoading) {
+        Polymer.Async.animationFrame.run(_ => {
+          if (this.defer) {
+            return;
+          }
+
+          let eventOptions = {bubbles: true, composed: true, detail: {srcElement: this}};
+          if (hostLoading) {
+            this.dispatchEvent(new CustomEvent('matryoshka-loading', eventOptions));
+          } else {
+            this.dispatchEvent(new CustomEvent('matryoshka-loaded', eventOptions));
+          }
+        })
+      }
+
+      /**
+       * Calculate the loaded state of the element
+       * @private
+       */
+      _isLoaded(relatedElements, hostLoading) {
+        return !this._isLoading(relatedElements, hostLoading);
+      }
+
+      /**
+       * Calculate the loading state of the element
+       * @private
+       */
+      _isLoading(relatedElements, hostLoading) {
+        return hostLoading || this._areRelatedElementsLoading(relatedElements);
+      }
+
+      /**
+       * When an event has fired that a child has started loading it get's added to the __relatedElements list..
+       * @private
+       */
+      _onMatryoshkaLoading(event) {
+        if (event && this === event.detail.srcElement) {
+          return true;
+        }
+
+        if (this.defer) {
+          event.stopPropagation();
+        }
+
+        this.addRelatedElement(event.detail.srcElement);
+        return true;
+      }
+
+      /**
+       * When an event has fired that a child element is loaded we recheck everything
+       * @private
+       */
+      _onMatryoshkaLoaded(e) {
+        this.checkLoaded();
+      }
+
+      /**
+       * Force a recheck of the elements loading state, normally called automatically.
+       */
+      checkLoaded() {
+        this.__relatedElements = this.__relatedElements.slice(0);
+      }
+
+      /**
+       * @protected
+       */
+      connectedCallback() {
+        super.connectedCallback();
+        this._checkLoaded = this.checkLoaded.bind(this)
+      }
+
+      /**
+       * Ability to manually add a related elements that it needs to check for their loaded state.
+       * The element passed must implement MatryoshkaLoaderMixin as well.
+       * @param {HTMLElement} elem Optional parameter with the event that triggers.
+       */
+      addRelatedElement(elem) {
+        if (typeof elem.loaded !== "boolean") {
+          console.warn(
+            "Element requesting to be watched for loading state should implement MatryoshkaLoaderMixin",
+            elem
+          );
+        }
+
+        elem.addEventListener('matryoshka-loaded', this._checkLoaded);
+
+        var elems = this.__relatedElements ? this.__relatedElements.slice(0) : [];
+        elems.push(elem);
+        this.__relatedElements = elems;
+        this.checkLoaded();
+      }
+
+      /**
+       * Remove an element from being watch for it's loading state.
+       * @param elem
+       */
+      removeRelatedElement(elem) {
+        elem.removeEventListener('matryoshka-loaded', this._checkLoaded)
+
+        var elements = this.__relatedElements ? this.__relatedElements.slice(0) : [];
+        this.__relatedElements = elements.filter((relatedElem) => relatedElem !== elem)
+
+        this.checkLoaded()
+      }
+
+      /**
+       * Gives back a boolean of certain elements are still loading
+       * @param relatedElements
+       * @returns {boolean}
+       * @private
+       */
+      _areRelatedElementsLoading(relatedElements) {
+        var loadingElements = relatedElements.filter((elem) => elem.loading);
+
+        return loadingElements.length > 0
+      }
+    }
+
+    return MatryoshkaLoader;
+  }
+</script>

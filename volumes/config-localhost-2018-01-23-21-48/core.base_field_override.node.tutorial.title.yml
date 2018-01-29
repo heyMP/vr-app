@@ -1,0 +1,20 @@
+uuid: 48cecf31-ca3f-47ee-9ee6-c527098e88c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tutorial
+_core:
+  default_config_hash: vPeh7IYTu9tPWw2rMtR-zt4MEB5qSLkWIsCwdqNPbhg
+id: node.tutorial.title
+field_name: title
+entity_type: node
+bundle: tutorial
+label: Subject
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

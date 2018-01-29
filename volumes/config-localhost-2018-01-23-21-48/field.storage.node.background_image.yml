@@ -1,0 +1,25 @@
+uuid: a045a782-e1ef-43b1-aa57-1e303495a3e1
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin_contenta
+  module:
+    - media_entity
+    - node
+_core:
+  default_config_hash: 0YoJy0ONyfRnOGTtk1fWWptT5M-xl6KpZwt65o7F6rI
+id: node.background_image
+field_name: background_image
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

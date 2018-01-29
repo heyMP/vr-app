@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MatryoshkaLoaderMixin Defer</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="mixin/mixin-loader-element.html">
+  <link rel="import" href="mixin/non-mixin-loader-element.html">
+</head>
+<body style="max-width: 800px;">
+
+<h1>MatryoshkaLoaderMixin Defer</h1>
+
+<h2>Parent should be green after 2000ms, deferred element after 10000ms</h2>
+
+<demo-snippet>
+  <template>
+    <mixin-loader-element countdown="2000">
+      <mixin-loader-element countdown="3000">1</mixin-loader-element>
+      <mixin-loader-element countdown="5000" defer>
+        <mixin-loader-element countdown="10000">1</mixin-loader-element>
+      </mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+
+<style>
+  body {
+    font-family: sans-serif;
+  }
+</style>
+</body>
+</html>

@@ -1,0 +1,24 @@
+uuid: 5226d4d0-ca6f-4ad3-960f-e147da136d17
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.embeddable
+_core:
+  default_config_hash: 2dNvksmMx70zicK6QVdstWTDAhUMNQW7FCL-e60McN4
+id: node.embeddable.promote
+field_name: promote
+entity_type: node
+bundle: embeddable
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

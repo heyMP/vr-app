@@ -1,0 +1,40 @@
+{
+  "name": "apollo-client",
+  "description": "Polymer Apollo Client GraphQL implementation",
+  "main": "apollo-client.html",
+  "authors": [
+    "Paul Hachmang <paul@h-o.nl>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "GraphQL",
+    "Apollo Client",
+    "Firebase"
+  ],
+  "homepage": "https://github.com/reach-digital/polymer-apollo-client",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "matryoshka-loader": "reach-digital/polymer-matryoshka-loader#^0.8.0",
+    "polymer": "^2.0.2"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0"
+  },
+  "version": "2.0.0",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.0",
+    "commit": "6ede87b7a7b9045dac40751a5d783812a7767f4b"
+  },
+  "_source": "https://github.com/reach-digital/polymer-apollo-client.git",
+  "_target": "^2.0.0",
+  "_originalSource": "reach-digital/polymer-apollo-client",
+  "_direct": true
+}

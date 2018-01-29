@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>matryoshka-loader</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="behavior/loader-element.html">
+  <link rel="import" href="behavior/non-loader-element.html">
+</head>
+<body>
+
+  <div class="vertical-section centered">
+    <h1>MatryoshkaLoaderBehavior</h1>
+
+    <h2>Should be green immediately</h2>
+    <loader-element></loader-element>
+
+    <h2>Should be loaded after a second</h2>
+    <loader-element countdown="1000"></loader-element>
+
+    <h2>Should load and should turn green after 3300ms.</h2>
+    <loader-element>
+      <loader-element>
+        <non-loader-element>
+          <loader-element countdown="2000">1</loader-element>
+          <loader-element countdown="2500">2</loader-element>
+        </non-loader-element>
+      </loader-element>
+      <loader-element countdown="3300">3</loader-element>
+    </loader-element>
+
+    <h2>Should turn green after 2800ms</h2>
+    <loader-element countdown="1000">
+      <loader-element countdown="2800"></loader-element>
+      <loader-element countdown="1500"></loader-element>
+    </loader-element>
+
+    <loader-element countdown="2200">
+      <loader-element countdown="2800"></loader-element>
+      <loader-element countdown="1500"></loader-element>
+    </loader-element>
+
+    <loader-element countdown="3600">
+      <loader-element countdown="2800"></loader-element>
+      <loader-element countdown="1500"></loader-element>
+    </loader-element>
+
+    <loader-element>
+      <loader-element>
+        <loader-element countdown="2800">2</loader-element>
+        <loader-element countdown="1500">3</loader-element>
+      </loader-element>
+      <loader-element countdown="2500">2</loader-element>
+      <loader-element countdown="3800">3</loader-element>
+    </loader-element>
+
+
+    <h2>The second element depends on the first to be loaded</h2>
+    <loader-element countdown="5000" id="one"></loader-element>
+
+    <loader-element countdown="2000" id="two">
+      <loader-element countdown="3000"></loader-element>
+    </loader-element>
+
+    <h2>Parent should be green after 2000ms, deferred element after 10000ms</h2>
+    <loader-element countdown="2000">
+      <loader-element countdown="3000">1</loader-element>
+      <loader-element countdown="5000" defer>
+        <loader-element countdown="10000">1</loader-element>
+      </loader-element>
+    </loader-element>
+  </div>
+
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script>
+    document.getElementById('two').addRelatedElement(document.getElementById('one'));
+  </script>
+</body>
+</html>

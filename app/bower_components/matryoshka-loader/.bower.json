@@ -1,0 +1,39 @@
+{
+  "name": "matryoshka-loader",
+  "homepage": "https://github.com/reach-digital/polymer-matryoshka-loader",
+  "authors": [
+    "Paul Hachmang <paul@h-o.nl>"
+  ],
+  "description": "\"Defines a loading flag for elements that automatically take into account the loading state of its child elements.\"",
+  "main": "matryoshka-loader-mixin.html",
+  "keywords": [
+    "Russian",
+    "Doll",
+    "Loading",
+    "state"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^2.0.2"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0"
+  },
+  "version": "0.8.0",
+  "_release": "0.8.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.8.0",
+    "commit": "2f455d476158a86be3fd6762d60104db83487882"
+  },
+  "_source": "https://github.com/reach-digital/polymer-matryoshka-loader.git",
+  "_target": "^0.8.0",
+  "_originalSource": "reach-digital/polymer-matryoshka-loader"
+}

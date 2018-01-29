@@ -1,0 +1,25 @@
+<link rel="import" href="../../../polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+
+<dom-module id="non-loader-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 20px;
+        background-color: grey;
+      }
+    </style>
+
+    <span>
+      non-loader element
+    </span>
+    <slot></slot>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'non-loader-element'
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,80 @@
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../../polymer/lib/elements/dom-if.html">
+<link rel="import" href="../../matryoshka-loader-mixin.html">
+
+<dom-module id="mixin-loader-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding: 10px;
+        background-color: #F7F7F7;
+        border: 1px solid #fff;
+      }
+      :host([host-loading]) {
+        background-color: #fffe00;
+      }
+      :host([loaded]) {
+        background-color: #13e4ad;
+      }
+      span {
+        display: block;
+        margin-bottom: 10px;
+      }
+    </style>
+
+    <span>
+      <template is="dom-if" if="[[hostLoading]]">
+        hostLoading: [[countdown]]
+      </template>
+      <template is="dom-if" if="[[relatedLoading]]">
+        relatedLoading
+      </template>
+      <template is="dom-if" if="[[loading]]">
+        loading
+      </template>
+      <template is="dom-if" if="[[loaded]]">
+        loaded
+      </template>
+      <template is="dom-if" if="[[defer]]">
+        defer
+      </template>
+    </span>
+    <slot></slot>
+  </template>
+
+  <script>
+    class MixinLoaderElement extends MatryoshkaLoaderMixin(Polymer.Element) {
+      static get is() { return 'mixin-loader-element' }
+      static get properties() {
+        return {
+          countdown: Number,
+          hostLoading: {
+            reflectToAttribute: true
+          },
+          relatedLoading: {
+            type: Number,
+            reflectToAttribute: true,
+            computed: '_calculateRelatedLoading(_relatedElements)'
+          }
+        }
+      }
+
+      _calculateRelatedLoading(relatedElements) {
+        return this._areRelatedElementsLoading(relatedElements);
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        if (this.countdown) {
+          this.hostLoading = true;
+
+          Polymer.Async.timeOut.run(_ => {
+            this.hostLoading = false;
+          }, this.countdown)
+        }
+      }
+    }
+    customElements.define(MixinLoaderElement.is, MixinLoaderElement);
+  </script>
+</dom-module>

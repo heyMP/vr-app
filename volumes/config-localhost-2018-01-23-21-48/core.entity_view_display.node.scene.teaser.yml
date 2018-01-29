@@ -1,0 +1,37 @@
+uuid: 2dc6308a-c71d-421d-9487-ad59522524a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.scene.body
+    - node.type.scene
+  module:
+    - text
+    - user
+id: node.scene.teaser
+targetEntityType: node
+bundle: scene
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  langcode: true

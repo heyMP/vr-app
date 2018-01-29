@@ -1,0 +1,6 @@
+{
+  "name": "vr-app",
+  "short_name": "vr-app",
+  "start_url": "/",
+  "display": "standalone"
+}

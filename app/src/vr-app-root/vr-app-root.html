@@ -1,8 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/iron-meta/iron-meta.html">
-<link rel="import" href="../vr-app-homepage/vr-app-homepage.html">
-<link rel="import" href="../vr-app-scene/vr-app-scene.html">
+<link rel="import" href="../../bower_components/apollo-client/graphql-client.html" />
+<script src="../../bower_components/apollo-client/build/apollo-client.js"></script>
+<link rel="import" href="../vr-app-scene-list/vr-app-scene-list.html">
 
 <dom-module id="vr-app-root">
   <template>
@@ -15,7 +14,8 @@
       }
     </style>
 
-    <vr-app-homepage></vr-app-homepage>
+    <graphql-client config='{ "uri": "http://localhost/graphql" }'></graphql-client>
+    <vr-app-scene-list></vr-app-scene-list>
 
   </template>
 
@@ -52,7 +52,7 @@
        * Listen for request for getScene
        */
       __getSceneListHandler: async function (e, req) {
-        const scene = await this.getScene();
+        const scenes = await this.getScene();
         req.el.scenes = scenes.data;
       },
 

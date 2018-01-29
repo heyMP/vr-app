@@ -1,0 +1,25 @@
+uuid: 0c976156-3ff2-49cd-8623-8a95a2561053
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - comment
+    - node
+_core:
+  default_config_hash: rRVnpaZqI15NQGLBT9OLHVyeHU1ZBqPWsrrEvVtjxWI
+id: node.comment
+field_name: comment
+entity_type: node
+type: comment
+settings:
+  comment_type: comment
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

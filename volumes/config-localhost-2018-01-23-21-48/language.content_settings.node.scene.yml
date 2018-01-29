@@ -1,0 +1,11 @@
+uuid: c851276d-c12d-435c-af67-d1868c5c93b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.scene
+id: node.scene
+target_entity_type_id: node
+target_bundle: scene
+default_langcode: site_default
+language_alterable: false

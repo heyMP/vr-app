@@ -1,0 +1,44 @@
+uuid: b82f0424-a2f0-41c5-9ac8-6940e621d1bd
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin_contenta
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: Yd2xXw9bOcUopOb2E7HdZ5ml6OYTQ2YBKzTUYELd-ps
+id: node.field_topic
+field_name: field_topic
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'JSON API'
+      label: 'JSON API'
+    -
+      value: Miscelaneous
+      label: Miscelaneous
+    -
+      value: 'Open API'
+      label: 'Open API'
+    -
+      value: OAuth2
+      label: OAuth2
+    -
+      value: Subrequests
+      label: Subrequests
+    -
+      value: GraphQL
+      label: GraphQL
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

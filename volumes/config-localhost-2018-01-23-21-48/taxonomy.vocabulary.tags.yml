@@ -1,0 +1,14 @@
+uuid: b256a4b9-dccb-4ed0-9366-de537837592d
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+_core:
+  default_config_hash: HJlsFfKP4PFHK1ub6QCSNFmzAnGiBG7tnx53eLK1lnE
+name: Tags
+vid: tags
+description: 'Use tags to group articles on similar topics into categories.'
+hierarchy: 0
+weight: 0

@@ -1,0 +1,25 @@
+uuid: 0bebf0c8-65a3-48f2-af6a-4731e9f85d46
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - node
+_core:
+  default_config_hash: rR_mAQUQsbtaYwpLRz4Aob8w-Fv-svjxSrlxVN_b2GQ
+id: node.field_total_time
+field_name: field_total_time
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

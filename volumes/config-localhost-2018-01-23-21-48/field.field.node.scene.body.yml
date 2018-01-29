@@ -1,0 +1,22 @@
+uuid: 61e8a863-22cd-474e-8bf4-adecaf762328
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.scene
+  module:
+    - text
+id: node.scene.body
+field_name: body
+entity_type: node
+bundle: scene
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

@@ -1,0 +1,22 @@
+uuid: 59b7855d-18d5-4f10-8b10-816972beebf8
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin_contenta
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: 37aX3MVNj-O3E6hykfwx5Q3gm2Od8WyFqFfB7STQOfk
+name: Tutorial
+type: tutorial
+description: 'A brief wrapper on external documentation for a particular piece in Contenta CMS.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

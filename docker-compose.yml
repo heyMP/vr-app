@@ -16,7 +16,6 @@ services:
     networks:
       - contenta
     volumes:
-      - ./contenta/content_jsonapi:/var/www/web/profiles/contrib
       - www:/var/www
     # this ensures that nginx's upstream host "php" will always have
     # valid DNS when we're starting up
@@ -50,6 +49,11 @@ services:
     volumes: 
       - ./service_snapshot:/home/node/html
       - service_snapshot_nodemodules:/home/node/html/node_modules
+  drupal_codebase:
+    image: ubuntu
+    volumes:
+     - www:/var/www
+     - ./drupal_codebase:/var/www/web
 
 volumes:
   data:

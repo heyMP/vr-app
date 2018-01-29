@@ -1,0 +1,21 @@
+uuid: 9515f8ed-4eb1-4483-95f6-1eb13c0741fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ingredients
+    - node.type.recipe
+_core:
+  default_config_hash: '-LLOoq80WZGZg39ZzKiQKhIjGuil5UL8G6kuk_H6B2g'
+id: node.recipe.field_ingredients
+field_name: field_ingredients
+entity_type: node
+bundle: recipe
+label: Ingredients
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

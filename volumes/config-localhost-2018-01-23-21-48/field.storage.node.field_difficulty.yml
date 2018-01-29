@@ -1,0 +1,35 @@
+uuid: fb86d651-cb61-40a7-af49-bb7c0881011f
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin
+  module:
+    - node
+    - options
+_core:
+  default_config_hash: McB7eq10M4jFq8MTio5i7PS2sjaWFYCprMH9DJodVao
+id: node.field_difficulty
+field_name: field_difficulty
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: easy
+      label: Easy
+    -
+      value: middle
+      label: Middle
+    -
+      value: hard
+      label: Hard
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

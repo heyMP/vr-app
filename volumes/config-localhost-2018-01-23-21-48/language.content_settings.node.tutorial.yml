@@ -1,0 +1,13 @@
+uuid: 64b19494-20a4-4add-84f3-ef73df5e811b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tutorial
+_core:
+  default_config_hash: FurP_BsLPwYiXDJCqEo1cQAmHpBx9Qw-Bw_J1Lbrd5U
+id: node.tutorial
+target_entity_type_id: node
+target_bundle: tutorial
+default_langcode: site_default
+language_alterable: false

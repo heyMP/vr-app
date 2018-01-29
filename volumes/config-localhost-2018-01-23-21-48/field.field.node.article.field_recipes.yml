@@ -1,0 +1,30 @@
+uuid: cac72876-dbea-4644-9fbd-f301e538c23b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recipes
+    - node.type.article
+    - node.type.recipe
+_core:
+  default_config_hash: Q-XxosEHs9occrMXCzymAJOalLtedw8e0uXKFGee8zI
+id: node.article.field_recipes
+field_name: field_recipes
+entity_type: node
+bundle: article
+label: Recipes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      recipe: recipe
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

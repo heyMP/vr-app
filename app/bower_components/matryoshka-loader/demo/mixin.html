@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MatryoshkaLoaderMixin</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="mixin/mixin-loader-element.html">
+  <link rel="import" href="mixin/non-mixin-loader-element.html">
+</head>
+<body style="max-width: 800px;">
+
+<h1>MatryoshkaLoaderMixin</h1>
+
+<h2>Should be green immediately</h2>
+<demo-snippet>
+  <template>
+    <mixin-loader-element></mixin-loader-element>
+  </template>
+</demo-snippet>
+
+<h2>Should be loaded after a second</h2>
+<demo-snippet>
+  <template>
+    <mixin-loader-element countdown="1000"></mixin-loader-element>
+  </template>
+</demo-snippet>
+
+
+<h2>Should load and should turn green after 3300ms.</h2>
+<demo-snippet>
+  <template>
+    <mixin-loader-element>
+      <mixin-loader-element>
+        <non-mixin-loader-element>
+          <mixin-loader-element countdown="2000">1</mixin-loader-element>
+          <mixin-loader-element countdown="2500">2</mixin-loader-element>
+        </non-mixin-loader-element>
+      </mixin-loader-element>
+      <mixin-loader-element countdown="3300">3</mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+
+
+<h2>Should turn green after 2800ms</h2>
+<demo-snippet>
+  <template>
+    <mixin-loader-element countdown="1000">
+      <mixin-loader-element countdown="2800"></mixin-loader-element>
+      <mixin-loader-element countdown="1500"></mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+
+
+<demo-snippet>
+  <template>
+    <mixin-loader-element countdown="2200">
+      <mixin-loader-element countdown="2800"></mixin-loader-element>
+      <mixin-loader-element countdown="1500"></mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+
+
+<demo-snippet>
+  <template>
+    <mixin-loader-element countdown="3600">
+      <mixin-loader-element countdown="2800"></mixin-loader-element>
+      <mixin-loader-element countdown="1500"></mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+
+<demo-snippet>
+  <template>
+    <mixin-loader-element>
+      <mixin-loader-element>
+        <mixin-loader-element countdown="2800">2</mixin-loader-element>
+        <mixin-loader-element countdown="1500">3</mixin-loader-element>
+      </mixin-loader-element>
+      <mixin-loader-element countdown="2500">2</mixin-loader-element>
+      <mixin-loader-element countdown="3800">3</mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+
+
+<h2>The second element depends on the first to be loaded</h2>
+
+<demo-snippet>
+  <template>
+    <mixin-loader-element countdown="5000" id="one"></mixin-loader-element>
+
+    <mixin-loader-element countdown="2000" id="two">
+      <mixin-loader-element countdown="3000"></mixin-loader-element>
+    </mixin-loader-element>
+  </template>
+</demo-snippet>
+<script>
+  setTimeout(_ => {
+    document.getElementById('two').addRelatedElement(document.getElementById('one'));
+  }, 500)
+</script>
+
+
+<style>
+  body {
+    font-family: sans-serif;
+  }
+  mixin-loader-element, non-mixin-loader-element {
+    margin-bottom: 10px;
+  }
+</style>
+
+</body>
+</html>

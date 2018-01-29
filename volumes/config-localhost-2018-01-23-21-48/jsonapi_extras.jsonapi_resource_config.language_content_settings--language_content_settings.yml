@@ -1,0 +1,52 @@
+uuid: ad694b65-ddee-45d3-86ee-695dc850816b
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin_contenta
+  module:
+    - language
+_core:
+  default_config_hash: 1seYFkx69Hk11h3uvNdLh1O0xJa0IaYQRG_Ct-X1ugM
+id: language_content_settings--language_content_settings
+disabled: true
+path: language_content_settings/language_content_settings
+resourceType: language_content_settings--language_content_settings
+resourceFields:
+  id:
+    fieldName: id
+    publicName: id
+    enhancer:
+      id: ''
+    disabled: false
+  revision:
+    fieldName: revision
+    publicName: revision
+    enhancer:
+      id: ''
+    disabled: false
+  bundle:
+    fieldName: bundle
+    publicName: bundle
+    enhancer:
+      id: ''
+    disabled: false
+  langcode:
+    fieldName: langcode
+    publicName: langcode
+    enhancer:
+      id: ''
+    disabled: false
+  default_langcode:
+    fieldName: default_langcode
+    publicName: default_langcode
+    enhancer:
+      id: ''
+    disabled: false
+  uuid:
+    fieldName: uuid
+    publicName: uuid
+    enhancer:
+      id: ''
+    disabled: false

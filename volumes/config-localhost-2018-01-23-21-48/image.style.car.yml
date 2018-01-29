@@ -1,0 +1,19 @@
+uuid: 70ab9861-ed95-4d40-a21a-cd0b3db5ac54
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - recipes_magazin_contenta
+_core:
+  default_config_hash: guXoEY_Wg8I790U4ij5guBvABS0QLbWdnwOPz95lqEI
+name: car
+label: 'Card image (574×323)'
+effects:
+  2d64dc69-465d-4256-badf-f39311d985d4:
+    uuid: 2d64dc69-465d-4256-badf-f39311d985d4
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 574
+      height: 323
