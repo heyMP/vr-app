@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/apollo-client/graphql-query.html">
-<link rel="import" href="../../bower_components/apollo-client/graphql-mutation.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card-header.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 
 <dom-module id="vr-app-scene-list">
   <template>
@@ -12,24 +12,40 @@
 
       paper-card {
         max-width: 400px;
+        --paper-card-header-text: {
+          background: rgba(255,255,255, 0.5);
+          margin: .5em;
+          padding: .5em;
+        }
       }
     </style>
     <graphql-query result="{{data}}">
       query {
-        nodeQuery(limit: 10, offset: 0, filter: {type: "Scene", status: true}) {
+        nodeQuery(offset: 0, limit: 10, filter: { type: "Scene"}) {
+          count
           entities {
+            entityUuid
             ... on NodeScene {
               title
-              uuid
+              body {
+                processed
+              }
               fieldImage {
                 ... on FieldNodeFieldImage {
                   entity {
                     thumbnail {
-                      derivative(style: thumbnail) {
+                      alt
+                      title
+                      derivative(style: "large") {
                         url
                       }
                     }
-                  }
+                  } 
+                }
+              }
+              uid {
+                entity {
+                  name
                 }
               }
             }
@@ -39,32 +55,24 @@
     </graphql-query>
 
     <template is="dom-if" if="[[data]]">
-      <template is="dom-repeat" items="[[data.nodeQuery.entities]]">
-        
+      <template is="dom-repeat" items="[[data.nodeQuery.entities]]" items="item">
         <paper-card heading="[[item.title]]" image="[[item.fieldImage.entity.thumbnail.derivative.url]]" elevation="1" animated-shadow="false">
+          <div class="card-body">author: [[item.uid.entity.name]]</div>
           <div class="card-actions">
-            <a href$="[[__formatUrl(item.uuid)]]">
-              <paper-button>View</paper-button>
-            </a>
+            <a href$="[[__formatUrl(item.entityUuid)]]"> View Scene </a>
           </div>
         </paper-card>
-        
       </template>
     </template>
+
+
   </template>
   <script>
     Polymer({
       is: 'vr-app-scene-list',
-      properties: {
-        data: {
-          type: Object,
-          observer: '__scenesChanged'
-        }
-      },
       __formatUrl: function (uuid) {
         return `http://localhost:81/scene/${uuid}`;
       }
     });
   </script>
 </dom-module>
-
