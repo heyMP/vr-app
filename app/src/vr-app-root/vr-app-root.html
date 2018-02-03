@@ -14,20 +14,18 @@
       }
     </style>
 
-    <h1>Tutorials ([[data.length]])</h1>
+    <h1>Tutorials ([[response.data.length]])</h1>
     <ul>
-      <template is="dom-repeat" items="[[data]]">
+      <template is="dom-repeat" items="[[response.data]]">
         <li>[[item.attributes.title]]</li>
       </template>
     </ul>
 
     <iron-ajax
-       auto
-       url="http://localhost/api/node/tutorial"
-       handle-as="json"
-       on-response="__getTutorialsHandler"></iron-ajax>
-    
-
+      auto
+      url="http://localhost/api/node/tutorial"
+      handle-as="json"
+      last-response="{{response}}"></iron-ajax>
   </template>
 
   <script>
@@ -36,13 +34,6 @@
       is: 'vr-app-root',
 
       properties: {
-      },
-
-      /**
-       * Listen for request for getScene
-       */
-      __getTutorialsHandler: function (e) {
-        this.data = e.detail.response.data;
       },
 
     });
