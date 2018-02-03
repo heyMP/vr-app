@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/apollo-client/graphql-client.html" />
+<link rel="import" href="../../bower_components/apollo-client/graphql-query.html" />
 <script src="../../bower_components/apollo-client/build/apollo-client.js"></script>
 
 <dom-module id="vr-app-root">
@@ -21,12 +22,40 @@
       </template>
     </ul>
 
-    <iron-ajax
-       auto
-       url="http://localhost/api/node/tutorial"
-       handle-as="json"
-       on-response="__getTutorialsHandler"></iron-ajax>
-    
+    <graphql-client config='{ "uri": "http://localhost/graphql" }'></graphql-client>
+    <graphql-query result="{{starShipData}}">
+    query {
+      nodeQuery(offset: 0, limit:100, filter: { type: "Tutorial"}) {
+        count
+        entities {
+          uuid: entityUuid
+          ... on NodeTutorial {
+            summary: fieldSummary {
+              value: processed
+            }
+            image: fieldImage  {
+              ... on FieldNodeFieldImage {
+                entity {
+                  thumbnail {
+                    alt
+                    title
+                    style: derivative(style: "large") {
+                      url
+                    }
+                  }
+                } 
+              }
+            }
+            uid {
+              entity {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+    </graphql-query>
 
   </template>
 
