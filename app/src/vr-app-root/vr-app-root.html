@@ -1,7 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/apollo-client/graphql-client.html" />
 <script src="../../bower_components/apollo-client/build/apollo-client.js"></script>
-<link rel="import" href="../vr-app-scene-list/vr-app-scene-list.html">
 
 <dom-module id="vr-app-root">
   <template>
@@ -14,8 +14,19 @@
       }
     </style>
 
-    <graphql-client config='{ "uri": "http://localhost/graphql" }'></graphql-client>
-    <vr-app-scene-list></vr-app-scene-list>
+    <h1>Tutorials ([[data.length]])</h1>
+    <ul>
+      <template is="dom-repeat" items="[[data]]">
+        <li>[[item.attributes.title]]</li>
+      </template>
+    </ul>
+
+    <iron-ajax
+       auto
+       url="http://localhost/api/node/tutorial"
+       handle-as="json"
+       on-response="__getTutorialsHandler"></iron-ajax>
+    
 
   </template>
 
@@ -27,42 +38,11 @@
       properties: {
       },
 
-      listeners: {
-        'get-scene-list': '__getSceneListHandler',
-        'get-scene': '__getSceneHandler'
-      },
-
-      /**
-       * Get a single scene
-       * leave blank to get all collections
-       */
-      getScene: async function (id = null) {
-        const resource = 'http://localhost/api/node/scene';
-        const target = id ? `/${id}` : '';
-        const params = '?_format=api_json&include=field_image,field_image.thumbnail'
-        const url = resource + target + params;
-        const request = await fetch(url, {
-          method: 'get'
-        });
-        const scene = await request.json();
-        return scene;
-      },
-
       /**
        * Listen for request for getScene
        */
-      __getSceneListHandler: async function (e, req) {
-        const scenes = await this.getScene();
-        req.el.scenes = scenes.data;
-      },
-
-      /**
-       * Listen for request for getScene
-       */
-      __getSceneHandler: async function (e, req) {
-        const response = await this.getScene(req.id);
-        const scene = await response.json();
-        req.el.scene = scene;
+      __getTutorialsHandler: function (e) {
+        this.data = e.detail.response.data;
       },
 
     });

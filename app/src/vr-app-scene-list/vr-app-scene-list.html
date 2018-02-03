@@ -21,14 +21,14 @@
     </style>
     <graphql-query result="{{data}}">
       query {
-        nodeQuery(offset: 0, limit: 10, filter: { type: "Scene"}) {
+        nodeQuery(offset: 0, limit: 100, filter: { type: "Tutorial"}) {
           count
           entities {
             entityUuid
-            ... on NodeScene {
+            ... on NodeTutorial {
               title
-              body {
-                processed
+              summary: fieldSummary {
+                value: processed
               }
               fieldImage {
                 ... on FieldNodeFieldImage {
