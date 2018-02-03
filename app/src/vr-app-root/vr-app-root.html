@@ -15,46 +15,49 @@
       }
     </style>
 
-    <h1>Tutorials ([[data.length]])</h1>
+  <template is="dom-if" if="[[data]]">
+    <h1>Tutorials ([[data.nodeQuery.entities.length]])</h1>
     <ul>
-      <template is="dom-repeat" items="[[data]]">
-        <li>[[item.attributes.title]]</li>
-      </template>
+    <template is="dom-repeat" items="[[data.nodeQuery.entities]]" items="item">
+      <li>[[item.title]]</li>
+    </template>
     </ul>
+  </template>
 
     <graphql-client config='{ "uri": "http://localhost/graphql" }'></graphql-client>
-    <graphql-query result="{{starShipData}}">
-    query {
-      nodeQuery(offset: 0, limit:100, filter: { type: "Tutorial"}) {
-        count
-        entities {
-          uuid: entityUuid
-          ... on NodeTutorial {
-            summary: fieldSummary {
-              value: processed
-            }
-            image: fieldImage  {
-              ... on FieldNodeFieldImage {
-                entity {
-                  thumbnail {
-                    alt
-                    title
-                    style: derivative(style: "large") {
-                      url
-                    }
+    <graphql-query result="{{data}}">
+        query {
+          nodeQuery(offset: 0, limit: 100, filter: { type: "Tutorial"}) {
+            count
+            entities {
+              entityUuid
+              ... on NodeTutorial {
+                title
+                summary: fieldSummary {
+                  value: processed
+                }
+                fieldImage {
+                  ... on FieldNodeFieldImage {
+                    entity {
+                      thumbnail {
+                        alt
+                        title
+                        derivative(style: "large") {
+                          url
+                        }
+                      }
+                    } 
                   }
-                } 
-              }
-            }
-            uid {
-              entity {
-                name
+                }
+                uid {
+                  entity {
+                    name
+                  }
+                }
               }
             }
           }
         }
-      }
-    }
     </graphql-query>
 
   </template>
