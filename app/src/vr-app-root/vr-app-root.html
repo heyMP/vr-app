@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/apollo-client/graphql-client.html" />
 <link rel="import" href="../../bower_components/apollo-client/graphql-query.html" />
 <script src="../../bower_components/apollo-client/build/apollo-client.js"></script>
+<link rel="import" href="../vr-app-tutorial/vr-app-tutorial.html">
 
 <dom-module id="vr-app-root">
   <template>
@@ -12,17 +13,26 @@
         background: #f3f3f3;
         padding: 1em;
         margin: 0;
+        flex-wrap: wrap;
+      }
+      #container {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      #container vr-app-tutorial {
+        padding: .5em;
       }
     </style>
 
   <template is="dom-if" if="[[data]]">
     <h1>Tutorials ([[data.nodeQuery.entities.length]])</h1>
-    <ul>
-    <template is="dom-repeat" items="[[data.nodeQuery.entities]]" items="item">
-      <li>[[item.title]]</li>
-    </template>
-    </ul>
+    <div id="container">
+      <template is="dom-repeat" items="[[data.nodeQuery.entities]]" items="item">
+        <vr-app-tutorial title="[[item.title]]" author="[[item.uid.entity.name]]" image="[[item.fieldImage.entity.thumbnail.derivative.url]]"></vr-app-tutorial>
+      </template>
+    </div>
   </template>
+
 
     <graphql-client config='{ "uri": "http://localhost/graphql" }'></graphql-client>
     <graphql-query result="{{data}}">
