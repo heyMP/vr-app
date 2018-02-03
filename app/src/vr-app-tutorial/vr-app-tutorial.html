@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<dom-module id="vr-app-tutorial">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    <paper-card image="[[image]]">
+      <div class="card-content">
+        <div class="cafe-header">[[title]]</div>
+        <p>by [[author]]</p>
+        <p>[[summary]]</p>
+      </div>
+    </paper-card>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'vr-app-tutorial',
+      properties: {
+        title: String,
+        author: String,
+        image: String,
+        summary: String
+      }
+    });
+  </script>
+</dom-module>
